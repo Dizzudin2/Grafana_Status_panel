@@ -1,9 +1,9 @@
 "use strict";
 
-System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core/core_module", "app/core/utils/kbn", "moment", "./css/status_panel.css!"], function (_export, _context) {
+System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core/core_module", "app/core/utils/kbn", "moment", "./tooltip", "./css/status_panel.css!"], function (_export, _context) {
 	"use strict";
 
-	var MetricsPanelCtrl, _, TimeSeries, coreModule, kbn, moment, _createClass, panelDefaults, StatusPluginCtrl;
+	var MetricsPanelCtrl, _, TimeSeries, coreModule, kbn, moment, tooltip, _createClass, panelDefaults, StatusPluginCtrl;
 
 	function _classCallCheck(instance, Constructor) {
 		if (!(instance instanceof Constructor)) {
@@ -48,6 +48,8 @@ System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core
 			kbn = _appCoreUtilsKbn.default;
 		}, function (_moment) {
 			moment = _moment.default;
+		}, function (_tooltip) {
+			tooltip = _tooltip.default;
 		}, function (_cssStatus_panelCss) {}],
 		execute: function () {
 			_createClass = function () {
@@ -100,6 +102,7 @@ System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core
 					//this.log = $log.debug;
 					_this.filter = $filter;
 
+					_this.templateSrv = $injector.get('templateSrv');
 					_this.valueHandlers = ['Number Threshold', 'String Threshold', 'Date Threshold', 'Disable Criteria', 'Text Only'];
 					_this.aggregations = ['Last', 'First', 'Max', 'Min', 'Sum', 'Avg', 'Delta'];
 					_this.displayTypes = ['Regular', 'Annotation'];
@@ -611,6 +614,7 @@ System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core
 						} else {
 							this.$panelContainer.css('background-color', '');
 						}
+						this.$panelContainer.find('.panel-content').css('padding', 0);
 					}
 				}, {
 					key: "handleMaxAlertsToShow",
@@ -692,6 +696,11 @@ System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core
 						this.$panelContainer = elem.find('.panel-container');
 						this.$panelContainer.addClass("st-card");
 						this.$panelContoller = ctrl;
+						var templateSrv = this.templateSrv;
+						var v1 = templateSrv.replace('$test');
+						console.log("v1: " + v1);
+
+						tooltip(scope, elem, attrs, ctrl);
 					}
 				}], [{
 					key: "parseThresholds",

@@ -4,6 +4,7 @@ import TimeSeries from "app/core/time_series2";
 import coreModule from "app/core/core_module";
 import kbn from "app/core/utils/kbn";
 import moment from "moment";
+import tooltip from './tooltip';
 
 import './css/status_panel.css!';
 
@@ -27,6 +28,7 @@ const panelDefaults = {
 };
 
 export class StatusPluginCtrl extends MetricsPanelCtrl {
+
 	/** @ngInject */
 	constructor($scope, $injector, $log, $filter, annotationsSrv) {
 		super($scope, $injector);
@@ -35,6 +37,7 @@ export class StatusPluginCtrl extends MetricsPanelCtrl {
 		//this.log = $log.debug;
 		this.filter = $filter;
 
+		this.templateSrv = $injector.get('templateSrv');
 		this.valueHandlers = ['Number Threshold', 'String Threshold', 'Date Threshold', 'Disable Criteria', 'Text Only'];
 		this.aggregations = ['Last', 'First', 'Max', 'Min', 'Sum', 'Avg', 'Delta'];
 		this.displayTypes = ['Regular', 'Annotation'];
@@ -511,6 +514,7 @@ export class StatusPluginCtrl extends MetricsPanelCtrl {
 		} else {
 			this.$panelContainer.css('background-color', '');
 		}
+		this.$panelContainer.find('.panel-content').css('padding', 0);
 	}
 
 	handleMaxAlertsToShow() {
@@ -627,6 +631,11 @@ export class StatusPluginCtrl extends MetricsPanelCtrl {
 		this.$panelContainer = elem.find('.panel-container');
 		this.$panelContainer.addClass("st-card");
 		this.$panelContoller = ctrl;
+		const templateSrv = this.templateSrv;
+		var v1 = templateSrv.replace('$test');
+		console.log("v1: " + v1);
+	
+		tooltip(scope, elem, attrs, ctrl);
 	}
 }
 

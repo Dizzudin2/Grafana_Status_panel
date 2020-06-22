@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@grafana/data": "6.6.2",
+    "@grafana/toolkit": "6.6.2",
+    "@grafana/ui": "6.6.2",
+    "@grafana/runtime": "6.6.2",
     "babel": "~6.5.1",
     "grunt": "^1.0.3",
     "grunt-babel": "~6.0.0",
@@ -20,7 +24,8 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-execute": "~0.2.2",
     "grunt-systemjs-builder": "^0.2.5",
-    "load-grunt-tasks": "^4.0.0"
+    "load-grunt-tasks": "^4.0.0",
+    "@types/lodash": "4.14.149"
   },
   "dependencies": {
     "babel-plugin-transform-es2015-for-of": "^6.6.0",

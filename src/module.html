@@ -1,8 +1,8 @@
-﻿<div class="status-panel">
+﻿<div class="tooltip-overlay"></div>
+<div class="status-panel">
 	<div ng-show="ctrl.duplicates">
 		<strong>Error</strong>: There are multiple measurements with the same alias. Please give each measurement a unique name.
 	</div>
-
 	<div class="st-card-front" ng-hide="ctrl.duplicates">
 		<div class="ok-text" ng-style="ctrl.panel.colorMode === 'Metric' && !ctrl.panel.isIgnoreOKColors && {'color':ctrl.panel.colors.ok}">OK</div>
 		<div class="warning-text" ng-style="ctrl.panel.colorMode === 'Metric' && {'color':ctrl.panel.colors.warn}">Warning</div>
