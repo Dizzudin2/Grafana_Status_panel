@@ -586,6 +586,18 @@ System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core
 						} else {
 							this.panelState = 'ok-state';
 						}
+						// let variables = this.templateSrv.variables.find(x => x.name === 'state').current.text;
+						// if (variables !== "All") {
+						// 	variables = variables.split("+");
+						// 	variables = variables.map(str => str.trim());
+						// };
+
+						this.panel.panelState = this.panelState;
+						// if(variables.includes(this.panelState) || variables === "All"){
+						// 	this.panel.panelState = true;
+						// }else{
+						// 	this.panel.panelState = false ;
+						// }
 					}
 				}, {
 					key: "handleCssDisplay",
@@ -696,11 +708,9 @@ System.register(["app/plugins/sdk", "lodash", "app/core/time_series2", "app/core
 						this.$panelContainer = elem.find('.panel-container');
 						this.$panelContainer.addClass("st-card");
 						this.$panelContoller = ctrl;
-						var templateSrv = this.templateSrv;
-						var v1 = templateSrv.replace('$test');
-						console.log("v1: " + v1);
-
 						tooltip(scope, elem, attrs, ctrl);
+						// console.log(scope);
+						// console.log(scope.$parent.panel.gridPos);
 					}
 				}], [{
 					key: "parseThresholds",

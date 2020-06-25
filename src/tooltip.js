@@ -5,7 +5,6 @@ export default function tooltip(scope, elem, attrs, ctrl) {
 
     const panel = ctrl;
     const $tooltip =  $('<div id="tooltip">');
-
     elem.find('.status-panel').on({
         "mousemove": function(event){
             let body;

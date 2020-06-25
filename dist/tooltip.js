@@ -9,7 +9,6 @@ System.register(['lodash', 'jquery'], function (_export, _context) {
 
         var panel = ctrl;
         var $tooltip = $('<div id="tooltip">');
-
         elem.find('.status-panel').on({
             "mousemove": function mousemove(event) {
                 var body = void 0;
